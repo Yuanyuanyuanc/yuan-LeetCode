@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>topic</title>
 </head>
 <body>
 	
@@ -37,6 +37,47 @@
 		console.log(detectCapitalUse('USA'))
 		console.log(detectCapitalUse('FlaG'))
 
+		// 14 -> 最长公共前缀
+		var longestCommonPrefix = function(strs) {
+			if (strs.length === 1) return strs.toString()
+			if ([...new Set(strs)].length === 1) return strs[0]
+
+			let n = 0
+			let yes = true
+
+			while (yes) {
+				n += 1
+				const len = [...new Set(strs.map(i => i.slice(0, n)))].length
+				yes = len === 1
+			}
+
+			return n - 1 ? strs[0].slice(0, n - 1) : ''
+		}
+
+		console.log(longestCommonPrefix(["flower","flow","flight"]))
+		console.log(longestCommonPrefix(["dog","racecar","car"]))
+		console.log(longestCommonPrefix(["c", "c"]))
+		console.log(longestCommonPrefix(["a", "a", "b"]))
+		console.log(longestCommonPrefix(["ab","abcc"]))
+		console.log(longestCommonPrefix(["abca","abc"]))
+
+		// 633 -> 平方数之和
+		var judgeSquareSum = function(c) {
+    	let b = Math.ceil(Math.sqrt(c))
+    	let a = 0
+
+    	while (b >= a) {
+    		const num = a ** 2 + b ** 2
+
+    		if (num === c) return true
+    		if (num > c) b -= 1
+    		if (num < c) a += 1
+    	}
+
+    	return false
+		}
+
+		console.log(judgeSquareSum(4))
 	</script>
 
 </body>
