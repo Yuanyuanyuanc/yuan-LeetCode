@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// 506 -> 相对名次
+		var findRelativeRanks = function(nums) {
+		    const ranking = ['Gold Medal', 'Silver Medal', 'Bronze Medal']
+
+		    let ii = 0
+
+		    while (ii < nums.length) {
+		     	const n = Math.max(...nums.filter(i => typeof i === 'number'))
+		     	nums.splice(nums.indexOf(n), 1, ii < 3 ? ranking[ii] : ii + 1 + '')
+		     	ii += 1
+		    }
+
+		    return nums
+		}
+
+		console.log(findRelativeRanks([5,4,3,2,1]))
+
+		console.log(findRelativeRanks([10,3,8,9,4]))
+
+		// 520 -> 检测大写字母
+		var detectCapitalUse = function(word) {
+		    if (word === word.toUpperCase()) return true
+		    if (word === word.toLowerCase()) return true
+		    const newWord = word.slice(0,1).toUpperCase() + word.slice(1).toLowerCase()
+		    return newWord === word
+		}
+
+		console.log(detectCapitalUse('USA'))
+		console.log(detectCapitalUse('FlaG'))
+
+	</script>
+
+</body>
+</html>
