@@ -63,18 +63,18 @@
 
 		// 633 -> 平方数之和
 		var judgeSquareSum = function(c) {
-    	let b = Math.ceil(Math.sqrt(c))
-    	let a = 0
+	    	let b = Math.ceil(Math.sqrt(c))
+	    	let a = 0
 
-    	while (b >= a) {
-    		const num = a ** 2 + b ** 2
+	    	while (b >= a) {
+	    		const num = a ** 2 + b ** 2
 
-    		if (num === c) return true
-    		if (num > c) b -= 1
-    		if (num < c) a += 1
-    	}
+	    		if (num === c) return true
+	    		if (num > c) b -= 1
+	    		if (num < c) a += 1
+	    	}
 
-    	return false
+	    	return false
 		}
 
 		console.log(judgeSquareSum(4))
