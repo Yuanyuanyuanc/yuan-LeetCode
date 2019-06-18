@@ -135,6 +135,34 @@
 
 		console.log(strStr('hello', 'll'))
 		console.log(strStr('aaaaa', 'bba'))
+
+
+		// 118 -> 杨辉三角 (自我感觉这道题还是有点难的 0.0 没想到竟然做出来了 佩服自己🤣)
+		
+		//	[
+		//     	 [1],
+    	//      [1,1],
+   		//     [1,2,1],
+  		//    [1,3,3,1],
+ 		//   [1,4,6,4,1]
+		//  ]
+		
+		var generate = function(numRows) {
+			const list = new Array(numRows).fill('').map((i, idx) => new Array(idx + 1).fill(1))
+
+			list.forEach((i,idx) => {
+				if (idx > 1) {
+					const arr = []
+					for (let j = 0;j < list[idx - 1].length;j++) {
+						j && arr.push(list[idx - 1][j - 1] + list[idx - 1][j])
+					}
+					list[idx] = [1, ...arr, 1]
+				}
+			})
+
+			return list
+		}
+		console.log(generate(5))
 	</script>
 
 </body>
