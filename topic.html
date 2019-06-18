@@ -107,6 +107,34 @@
 		console.log(intersect([1,2,2,1], [2,2]))
 
 		console.log(intersect([],[1,1]))
+
+
+		// 349 -> 两个数组的交集
+		var intersection = function(nums1, nums2) {
+    		const list = []
+
+    		nums1.forEach(i => {
+    			if (nums2.includes(i)) {
+    				!list.includes(i) && list.push(i)
+    			}
+    		})
+
+    		return list
+		}
+
+		console.log(intersection([1,2,2,1], [2,2]))
+		console.log(intersection([4,9,5], [9,4,9,8,4]))
+
+		// 28 -> 实现strStr()
+		var strStr = function(haystack, needle) {
+    		if (!needle) return 0
+    		if (!haystack.includes(needle)) return -1
+
+    		return haystack.indexOf(needle)
+		}
+
+		console.log(strStr('hello', 'll'))
+		console.log(strStr('aaaaa', 'bba'))
 	</script>
 
 </body>
