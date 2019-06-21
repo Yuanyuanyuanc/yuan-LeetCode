@@ -179,6 +179,20 @@
 		}
 
 		console.log(removeDuplicates('abbaca')) // 'ca'
+
+		
+		// 884 -> 两句话中的不常见单词
+		var uncommonFromSentences = function(A, B) {
+		    return A.split(' ').concat(B.split(' ')).reduce((acc, next, index, array) => {
+		    	if (array.indexOf(next) === array.lastIndexOf(next)) {
+		    		acc.push(next)
+		    	}
+		    	return acc
+		    }, [])
+		}
+
+		console.log(uncommonFromSentences('this apple is sweet', 'this apple is sour'))
+		console.log(uncommonFromSentences('apple apple', 'banana'))
 	</script>
 
 </body>
