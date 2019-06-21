@@ -168,6 +168,17 @@
 		var sortedSquares = function(A) {
     		return A.map(i => i ** 2).sort((a,b) => a - b)
 		}
+
+		// 1047 -> 删除字符串中的所有相邻重复项
+		var removeDuplicates = function(S) {
+    		const toHeavy = str => {
+    			return /(\w)\1/g.test(str) ? toHeavy(str.replace(/(\w)\1/g, '')) : str
+    		}
+
+    		return toHeavy(S)
+		}
+
+		console.log(removeDuplicates('abbaca')) // 'ca'
 	</script>
 
 </body>

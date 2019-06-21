@@ -49,6 +49,28 @@
 		}
 		console.log(generate(5))
 
+		// 567 -> 字符串的排列
+		var checkInclusion = function(s1, s2) {
+		    return s2.includes(s1) || s2.includes(s1.split('').reverse().join(''))
+		    if (s2.repeat(2).includes(s1)) return true
+
+		    const list = []
+		    
+		    for (let i = 0;i < s1.length;i++) {
+		        list.push(s1.slice(i + 1) + s1.slice(0, i + 1))
+		    }
+
+		    console.log(list)
+		}
+
+		// console.log(checkInclusion('abc', 'bbbca'))
+		// console.log(checkInclusion('ab', 'eidbaooo'))
+		// console.log(checkInclusion('ab', 'eidboaoo'))
+
+		console.log(checkInclusion('adc', 'dcda'))
+
+		
+
 	</script>	
 
 </body>
