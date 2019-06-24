@@ -7,7 +7,16 @@
 <body>
 	
 	<script>
-		// 506 -> 相对名次
+		/*
+			506 -> 相对名次
+
+			前三名运动员的成绩为前三高的，因此将会分别被授予 “金牌”，“银牌”和“铜牌” ("Gold Medal", "Silver Medal" and "Bronze Medal").
+			余下的两名运动员，我们只需要通过他们的成绩计算将其相对名次即可。
+
+			思路: 
+				使用while循环,变量n为数组nums里数字类型值的最大值.
+				在数组nums里删除当前的n,判断是否是前三名,是就取ranking数组的值,否则取它的名次.
+		*/
 		var findRelativeRanks = function(nums) {
 		    const ranking = ['Gold Medal', 'Silver Medal', 'Bronze Medal']
 
@@ -23,10 +32,22 @@
 		}
 
 		console.log(findRelativeRanks([5,4,3,2,1]))
-
 		console.log(findRelativeRanks([10,3,8,9,4]))
 
-		// 520 -> 检测大写字母
+		/*
+			520 -> 检测大写字母
+
+			给定一个单词，你需要判断单词的大写使用是否正确。
+			我们定义，在以下情况时，单词的大写用法是正确的：
+			1. 全部字母都是大写，比如"USA"。
+			2. 单词中所有字母都不是大写，比如"leetcode"。
+			3. 如果单词不只含有一个字母，只有首字母大写， 比如 "Google"。
+			否则，我们定义这个单词没有正确使用大写字母。	
+
+			思路:
+				判断全是大写或者全是小写的话,返回true.
+				否则的话首字母大写,其余小写.	
+		*/ 
 		var detectCapitalUse = function(word) {
 		    if (word === word.toUpperCase()) return true
 		    if (word === word.toLowerCase()) return true
