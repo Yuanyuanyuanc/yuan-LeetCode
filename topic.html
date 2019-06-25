@@ -214,6 +214,48 @@
 
 		console.log(uncommonFromSentences('this apple is sweet', 'this apple is sour'))
 		console.log(uncommonFromSentences('apple apple', 'banana'))
+
+		/*
+			896 -> 单调数列
+
+			如果数组是单调递增或单调递减的，那么它是单调的。
+			如果对于所有 i <= j，A[i] <= A[j]，那么数组 A 是单调递增的。 如果对于所有 i <= j，A[i]> = A[j]，那么数组 A 是单调递减的。
+			当给定的数组 A 是单调数组时返回 true，否则返回 false。
+
+			思路：
+			1. 简单的方法将A按从小到大和从大到小的方式排列起来转为字符串存到list里
+			   如果list里有B为true,否则为false
+			   (声明B的原因是因为sort排序会改变原数组)
+
+			2. 先判断数组length为1的情况,接着用orderBy判断顺序是从小到大还是从大到小
+			   然后for循环,根据orderBy判断是否满足A[i] > A[i - 1]或者A[i] < A[i - 1],
+			   如果满足,即为false,否则为true
+
+		*/
+		var isMonotonic = function(A) {
+			const B = [...A]
+    		const list = [A.sort((a, b) => a - b).toString(), A.sort((a, b) => b - a).toString()]
+
+    		return list.includes(B.toString())
+		}
+
+		var isMonotonic = function(A) {
+			if (A.length === 1) return true
+			const orderBy = A[0] > A[A.length - 1]
+
+			for (let i = 1; i < A.length; i++) {
+				if (orderBy ? A[i] > A[i - 1] : A[i] < A[i - 1]) {
+					return false
+				}
+			}
+
+			return true
+		}
+
+		console.log(isMonotonic([1,2,2,3]))
+		console.log(isMonotonic([6,5,4,4]))
+		console.log(isMonotonic([1,3,2]))
+		console.log(isMonotonic([1,2,2,1]))
 	</script>
 
 </body>
