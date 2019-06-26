@@ -275,8 +275,10 @@
 
 			给定电子邮件列表 emails，我们会向列表中的每个地址发送一封电子邮件。实际收到邮件的不同地址有多少？
 
-			思路：下班咯 回家咯 明天上思路
-
+			思路：
+				例: 'test.email+alex@leetcode.com'
+				/\+([a-z]|\.)*\/g这条正则,用于匹配+号之后的字母或.,然后进行替换
+				然后split用@分隔,替换第0个的所有.为'',然后再拼接起来,进行去重.
 		*/
 		var numUniqueEmails = function(emails) {
     		return [...new Set(emails.map(i => {
@@ -290,6 +292,36 @@
 			'test.e.mail+bob.cathy@leetcode.com',
 			'testemail+david@lee.tcode.com'
 		]))
+
+		/*
+			258 -> 各位相加
+
+			给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数
+
+			思路：
+				while循环,只要num大于10,就把num转成字符串然后转为数组进行累加
+		*/
+		var addDigits = function(num) {
+    		while (num >= 10) {
+                num = [...(num.toString())].reduce((a,b) => Number(a) + Number(b),0)
+            }
+
+            return num
+		}
+
+		/* 
+			268 -> 缺失数字
+
+			给定一个包含 0, 1, 2, ..., n 中 n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。
+
+			思路：
+				通过nums的length+1生成新的数组的值的和减去nums数组的值的和就是缺失的数字
+		*/
+		var missingNumber = function(nums) {
+		    if (nums.length == 1 && !nums[0]) return 1
+
+		    return new Array(nums.length + 1).fill(1).reduce((a,b,c) => a + c,0) - nums.reduce((a,b) => a + b,0)
+		}
 	</script>
 
 </body>
