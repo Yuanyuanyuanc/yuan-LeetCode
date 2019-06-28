@@ -322,6 +322,32 @@
 
 		    return new Array(nums.length + 1).fill(1).reduce((a,b,c) => a + c,0) - nums.reduce((a,b) => a + b,0)
 		}
+
+		/* 
+			905 -> 按奇偶排序数组
+
+			给定一个非负整数数组 A，返回一个数组，在该数组中， A 的所有偶数元素之后跟着所有奇数元素。
+
+			你可以返回满足此条件的任何数组作为答案。
+
+			思路：
+				声明两个数组 一个用来放奇数 一个用来放偶数 就ok
+		*/
+		var sortArrayByParity = function(A) {
+			let arr = []
+			let arr2 = []
+    		for (let i = 0;i < A.length;i++) {
+    			if (A[i] % 2 === 1) {
+    				arr.push(A[i])
+    			} else {
+    				arr2.push(A[i])
+    			}
+    		}
+
+    		return [...arr2, ...arr]
+		}
+
+		console.log(sortArrayByParity([3,1,2,4]))
 	</script>
 
 </body>
