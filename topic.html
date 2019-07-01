@@ -331,20 +331,31 @@
 			你可以返回满足此条件的任何数组作为答案。
 
 			思路：
-				声明两个数组 一个用来放奇数 一个用来放偶数 就ok
+				1. 声明两个数组 一个用来放奇数 一个用来放偶数 就ok
+				2. 拿到数组的长度进行循环 如果是奇数从数组中删除添加到数组后边 
 		*/
 		var sortArrayByParity = function(A) {
 			let arr = []
 			let arr2 = []
-    		for (let i = 0;i < A.length;i++) {
-    			if (A[i] % 2 === 1) {
-    				arr.push(A[i])
-    			} else {
-    				arr2.push(A[i])
-    			}
-    		}
+			for (let i = 0;i < A.length;i++) {
+				if (A[i] % 2 === 1) {
+					arr.push(A[i])
+				} else {
+					arr2.push(A[i])
+				}
+			}
 
-    		return [...arr2, ...arr]
+			return [...arr2, ...arr]
+			
+			let len = A.length
+		    for (let i = 0;i < len;i++) {
+		        if (A[i] % 2 === 1) {
+		            A.push(A.splice(i, 1)[0])
+		            i--
+		            len--
+		        }
+		    }
+		    return A
 		}
 
 		console.log(sortArrayByParity([3,1,2,4]))
