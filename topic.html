@@ -389,6 +389,22 @@
 
 		    return num == 1
 		}
+
+		/*
+			283 -> 移动零
+
+			给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+
+			思路：
+				从大到小循环 为0就删除并添加到nums后边
+		*/
+		var moveZeroes = function(nums) {
+    		for (let i = nums.length;i >= 0;i--) {
+    			if (nums[i] === 0) {
+    				nums.push(nums.splice(i,1)[0])
+    			}
+    		}
+    	}
 	</script>
 
 </body>
