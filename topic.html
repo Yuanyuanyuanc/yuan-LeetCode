@@ -449,6 +449,33 @@
 		console.log(addToArrayForm([1,2,6,3,0,7,1,7,1,9,7,5,6,6,4,4,0,0,6,3], 516))
 		console.log(addToArrayForm([2,7,4], 181))
 		console.log(addToArrayForm([2,1,5], 806))
+		
+		/*
+			567 -> 字符串的排列
+
+			给定两个字符串 s1 和 s2，写一个函数来判断 s2 是否包含 s1 的排列。
+
+			换句话说，第一个字符串的排列之一是第二个字符串的子串。
+
+			思路：
+				0.0 超时了 for循环 按s1的长度 在s2里截取 然后转数组排序对比 一样就true 否则就false 可以解答出来 时间太长了 测试题里有一个超长的字符串- -
+		*/
+		var checkInclusion = function(s1, s2) {
+			const a = s1.split('').sort().join('')
+			
+			for (let i = 0;i < s2.length;i++) {
+				const b = s2.slice(i, i + s1.length).split('').sort().join('')
+
+				if (a == b) return true
+			}
+
+			return false
+		}
+
+		// console.log(checkInclusion('abc', 'bbbca'))
+		// console.log(checkInclusion('ab', 'eidbaooo'))
+		// console.log(checkInclusion('ab', 'eidboaoo'))
+		console.log(checkInclusion('adc', 'dcda'))
 	</script>
 
 </body>
