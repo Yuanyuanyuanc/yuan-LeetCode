@@ -405,6 +405,50 @@
     			}
     		}
     	}
+
+    	/*
+			989 -> 数组形式的整数加法
+
+			对于非负整数 X 而言，X 的数组形式是每位数字按从左到右的顺序形成的数组。例如，如果 X = 1231，那么其数组形式为 [1,2,3,1]。
+
+			给定非负整数 X 的数组形式 A，返回整数 X+K 的数组形式。
+
+			思路：
+				感觉好像写的有点复杂 
+				1. 首先声明ken等于K转字符串转数组然后map把每一项转为数字
+				2. 声明B A的长度大于等于ken的长度 ？ B就是反转的A 否则创建一个长度为ken与A的差的数组添加0然后拼接起来再反转
+				3. 循环B 
+				4. 如果有ken[i]有的话 然后判断是否大于9 大于9前一位加1 个位再赋值 否则直接相加再赋值
+				5. 没有ken[1]的话 不用相加了 就判断是否大于9 大于9前一位加1 个位再赋值 
+		*/
+		var addToArrayForm = function(A, K) {
+			const ken = String(K).split('').reverse().map(Number)
+			const B = A.length >= ken.length ? A.reverse() : new Array(ken.length - A.length).fill(0).concat(A).reverse()
+
+			for (let i = 0;i < B.length;i++) {
+				if (ken[i] != undefined) {
+					if (B[i] + ken[i] > 9) {
+						B[i + 1] = B[i + 1] ? ++B[i + 1] : 1
+						B[i] = String(B[i] + ken[i])[1] * 1
+					} else {
+						B[i] = B[i] + ken[i]
+					}
+				} else {
+					if (B[i] > 9) {
+						B[i + 1] = B[i + 1] ? ++B[i + 1] : 1
+						B[i] = String(B[i])[1] * 1
+					}
+				}
+			}
+			return B.reverse()
+		}
+
+		console.log(addToArrayForm([1], 33))
+		console.log(addToArrayForm([0], 23))
+		console.log(addToArrayForm([9,9,9,9,9,9,9,9,9,9], 1))
+		console.log(addToArrayForm([1,2,6,3,0,7,1,7,1,9,7,5,6,6,4,4,0,0,6,3], 516))
+		console.log(addToArrayForm([2,7,4], 181))
+		console.log(addToArrayForm([2,1,5], 806))
 	</script>
 
 </body>
